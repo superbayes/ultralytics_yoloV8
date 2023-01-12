@@ -1,0 +1,14 @@
+```
+conda create -n yoloV8_37 python=3.7 -y
+conda activate yoloV8_37
+pip install ultralytics -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+#恒源云下载yolov8
+git clone https://ghproxy.com/https://github.com/superbayes/ultralytics_yoloV8.git
+#预测
+yolo task=detect mode=predict model=yolov8n.pt source="https://ultralytics.com/images/bus.jpg"
+#pt2onnx
+yolo task=detect mode=export model=yolov8n.pt format=onnx simplify=True opset=13
+
+```
