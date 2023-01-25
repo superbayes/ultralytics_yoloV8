@@ -9,6 +9,6 @@ git clone https://ghproxy.com/https://github.com/superbayes/ultralytics_yoloV8.g
 #预测
 yolo task=detect mode=predict model=yolov8n.pt source="https://ultralytics.com/images/bus.jpg"
 #pt2onnx
-yolo task=detect mode=export model=yolov8n.pt format=onnx simplify=True opset=13
+yolo task=detect mode=export model=yolov8n.pt format=onnx simplify=True opset=11
 
 ```
