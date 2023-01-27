@@ -14,4 +14,9 @@ git clone https://ghproxy.com/https://github.com/superbayes/ultralytics_yoloV8.g
 ## 预测
 yolo task=detect mode=predict model=yolov8n.pt source="https://ultralytics.com/images/bus.jpg"
 ## pt2onnx
-`yolo task=detect mode=export model=yolov8n.pt format=onnx simplify=True opset=11`
+yolo task=detect mode=export model=yolov8n.pt format=onnx simplify=True opset=11 
+yolo task=detect mode=export model=yolov8n-seg.pt format=onnx simplify=True opset=11
+
+#如果缺少libglib2.0-0.so
+apt update
+apt-get install -y libglib2.0-0 libsm6 libxrender1 libxext6
