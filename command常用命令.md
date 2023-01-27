@@ -7,6 +7,8 @@ pip install ultralytics -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
+git clone https://ghproxy.com/https://github.com/ultralytics/ultralytics.git
+
 ## 恒源云下载yolov8
 git clone https://ghproxy.com/https://github.com/superbayes/ultralytics_yoloV8.git
 ## 预测
