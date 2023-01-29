@@ -12,7 +12,6 @@ git clone https://ghproxy.com/https://github.com/ultralytics/ultralytics.git
 
 ## train
 yolo task=detect mode=train model=yolov8n.pt data=./bccd/data.yaml batch=50 epochs=200 imgsz=640 workers=16 device=0
-
 ## 预测
 yolo task=detect mode=predict model=yolov8n.pt source="https://ultralytics.com/images/bus.jpg"
 ## pt2onnx
@@ -23,6 +22,11 @@ yolo task=detect mode=export model=yolov8n-seg.pt format=onnx simplify=True opse
 tensorboard --logdir runs/detect/train6
 tensorboard --logdir ~/../hy-tmp/yolo/yolov5/runs/train/exp2
 cp Arial.ttf /root/.config/Ultralytics/Arial.ttf
+
+#压缩
+zip -q -r runs.zip runs/*
+#解压
+unzip dataset.zip -d ./
 
 #如果缺少libglib2.0-0.so
 apt update
