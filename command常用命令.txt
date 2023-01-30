@@ -12,6 +12,8 @@ git clone https://ghproxy.com/https://github.com/ultralytics/ultralytics.git
 
 ## train
 yolo task=detect mode=train model=yolov8n.pt data=./bccd/data.yaml batch=50 epochs=200 imgsz=640 workers=16 device=0
+#验证
+yolo task=detect mode=val model=runs/detect/train/weights/best.pt data=bccd/data.yaml device=0
 ## 预测
 yolo task=detect mode=predict model=yolov8n.pt source="https://ultralytics.com/images/bus.jpg"
 ## pt2onnx
@@ -27,6 +29,9 @@ cp Arial.ttf /root/.config/Ultralytics/Arial.ttf
 zip -q -r runs.zip runs/*
 #解压
 unzip dataset.zip -d ./
+
+#OLOv8教程系列：一、使用自定义数据集训练YOLOv8模型
+https://blog.csdn.net/weixin_45921929/article/details/128673338
 
 #如果缺少libglib2.0-0.so
 apt update
