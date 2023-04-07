@@ -11,9 +11,10 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 git clone https://ghproxy.com/https://github.com/ultralytics/ultralytics.git
 ## 下载模型
 wget https://ghproxy.com/https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8m.pt
+wget https://ghproxy.com/https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt
 
 ## train
-yolo detect train data=for_yolo/data.yaml model=yolov8m.yaml pretrained=yolov8m.pt epochs=400 imgsz=1280 workers=8 device=0 batch=8
+yolo detect train data=for_yolo/data.yaml model=yolov8m.yaml pretrained=yolov8m.pt epochs=400 imgsz=1280 workers=8 device=0 batch=32
 yolo task=detect mode=train model=yolov8n.pt data=./bccd/data.yaml batch=50 epochs=200 imgsz=640 workers=16 device=0
 #验证
 yolo task=detect mode=val model=runs/detect/train/weights/best.pt data=bccd/data.yaml device=0
