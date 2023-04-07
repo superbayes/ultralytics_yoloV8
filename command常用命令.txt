@@ -21,7 +21,7 @@ yolo task=detect mode=val model=runs/detect/train/weights/best.pt data=bccd/data
 ## 预测
 yolo task=detect mode=predict model=yolov8n.pt source="https://ultralytics.com/images/bus.jpg"
 ## pt2onnx
-yolo task=detect mode=export model=yolov8n.pt format=onnx simplify=True opset=11 
+yolo task=detect mode=export model=yolov8n.pt format=onnx simplify=True opset=11 imgsz=1280
 yolo task=detect mode=export model=yolov8n-seg.pt format=onnx simplify=True opset=11
 
 #查看训练指标
