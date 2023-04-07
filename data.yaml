@@ -1,0 +1,6 @@
+path: /hy-tmp/ultralytics
+train: for_yolo/train/images
+val: for_yolo/val/images
+
+nc: 1
+names: ['i']
