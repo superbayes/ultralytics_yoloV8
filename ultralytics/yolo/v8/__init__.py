@@ -1,11 +1,10 @@
-# Ultralytics YOLO 🚀, GPL-3.0 license
+import importlib
+import sys
 
-from pathlib import Path
+from ultralytics.utils import LOGGER
 
-from ultralytics.yolo.v8 import classify, detect, segment
+# Set modules in sys.modules under their old name
+sys.modules['ultralytics.yolo.v8'] = importlib.import_module('ultralytics.models.yolo')
 
-ROOT = Path(__file__).parents[0]  # yolov8 ROOT
-
-__all__ = ["classify", "segment", "detect"]
-
-from ultralytics.yolo.configs import hydra_patch  # noqa (patch hydra cli)
+LOGGER.warning("WARNING ⚠️ 'ultralytics.yolo.v8' is deprecated since '8.0.136' and will be removed in '8.1.0'. "
+               "Please use 'ultralytics.models.yolo' instead.")
