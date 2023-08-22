@@ -1,7 +1,6 @@
 
-conda create -n yoloV8_37 python=3.7 -y
+conda create -n yoloV8_37 python=3.7 -y && conda activate yoloV8_37
 
-conda activate yoloV8_37
 
 pip install ultralytics onnxruntime onnxsim -i https://pypi.tuna.tsinghua.edu.cn/simple
 
