@@ -189,7 +189,7 @@ class ConfusionMatrix:
         self.task = task
         self.matrix = np.zeros((nc + 1, nc + 1)) if self.task == 'detect' else np.zeros((nc, nc))
         self.nc = nc  # number of classes
-        self.conf = conf
+        self.conf = 0.25 if conf in (None, 0.001) else conf  # apply 0.25 if default val conf is passed
         self.iou_thres = iou_thres
 
     def process_cls_preds(self, preds, targets):
@@ -520,7 +520,6 @@ class Metric(SimpleClass):
             maps(): mAP of each class. Returns: Array of mAP scores, shape: (nc,).
             fitness(): Model fitness as a weighted combination of metrics. Returns: Float.
             update(results): Update metric attributes with new evaluation results.
-
         """
 
     def __init__(self) -> None:
@@ -624,8 +623,19 @@ class Metric(SimpleClass):
 
     def update(self, results):
         """
+        Updates the evaluation metrics of the model with a new set of results.
+
         Args:
-            results (tuple): A tuple of (p, r, ap, f1, ap_class)
+            results (tuple): A tuple containing the following evaluation metrics:
+                - p (list): Precision for each class. Shape: (nc,).
+                - r (list): Recall for each class. Shape: (nc,).
+                - f1 (list): F1 score for each class. Shape: (nc,).
+                - all_ap (list): AP scores for all classes and all IoU thresholds. Shape: (nc, 10).
+                - ap_class_index (list): Index of class for each AP score. Shape: (nc,).
+
+        Side Effects:
+            Updates the class attributes `self.p`, `self.r`, `self.f1`, `self.all_ap`, and `self.ap_class_index` based
+            on the values provided in the `results` tuple.
         """
         self.p, self.r, self.f1, self.all_ap, self.ap_class_index = results
 
